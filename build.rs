@@ -10,6 +10,7 @@ fn main() {
     let wrapper_path = wrapper_path.to_str().unwrap();
     let mut wrapper = File::create(wrapper_path).unwrap();
     writeln!(wrapper, "#include <xpr/xpr_avframe.h>").unwrap();
+    writeln!(wrapper, "#include <xpr/xpr_common.h>").unwrap();
     writeln!(wrapper, "#include <xpr/xpr_rtsp.h>").unwrap();
     writeln!(wrapper, "#include <xpr/xpr_streamblock.h>").unwrap();
     writeln!(wrapper, "#include <xpr/xpr_sys.h>").unwrap();
@@ -30,6 +31,7 @@ fn main() {
         .allowlist_function("xpr_.*")
         .allowlist_function("XPR_.*")
         .allowlist_type("XPR_.*")
+        .allowlist_var("AV_.*")
         .allowlist_var("XPR_.*")
         .generate()
         .expect("Unable to generate bindings");
