@@ -42,5 +42,8 @@ fn main() {
         .write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
 
-    println!("cargo:rustc-link-lib=xpr");
+    println!("cargo:rustc-link-search=native=/usr/lib");
+    println!("cargo:rustc-link-lib=static=live");
+    println!("cargo:rustc-link-lib=static=xpr");
+    println!("cargo:rustc-link-lib=dylib=stdc++");
 }
